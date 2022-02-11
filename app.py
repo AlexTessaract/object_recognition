@@ -48,13 +48,10 @@ def process_file(path, filename):
     
 
 def detect_object(path, filename):    
-    CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
-        "bottle", "bus", "car", "cat", "chair", "cow", "diningtable",
-        "dog", "horse", "motorbike", "person", "pottedplant", "sheep",
-        "sofa", "train", "tvmonitor"]
+    CLASSES = ["Angry", "Disgust", "Fear", "Happy", "Sad", "Surprise", "Neutral"]
     COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
-    prototxt="ssd/MobileNetSSD_deploy.prototxt.txt"
-    model ="ssd/MobileNetSSD_deploy.caffemodel"
+    prototxt="ssd/deploy.prototxt.txt"
+    model ="ssd/res10_300x300_ssd_iter_140000.caffemodel"
     net = cv2.dnn.readNetFromCaffe(prototxt, model)
     image = cv2.imread(path)
     image = cv2.resize(image,(480,360))
